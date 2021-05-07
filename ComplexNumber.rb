@@ -5,19 +5,19 @@ class ComplexNumber
     @@count_of_multiply = 0
     @@count_of_multiple_multiply = 0
 
-    def add_Two_Complex(second_object)
+    def +(second_object)
         result = @@first_complex + second_object
         puts "The Result of add complex: #{result}\n\n"
         @@count_of_addation +=1 
     end
 
-    def multiply_Two_Complex(second_object)
+    def *(second_object)
         result = @@first_complex * second_object
         puts "The Result of add complex: #{result}\n\n"
         @@count_of_multiply +=1 
     end
 
-    def add_Multiple_Complex(input_arr)
+    def bulk_add(input_arr)
         arr = input_arr
         i = 0
         result = 0
@@ -29,7 +29,7 @@ class ComplexNumber
         @@count_of_multiple_addation +=1 
     end
 
-    def multiply_Multiple_Complex(input_arr)
+    def bulk_multiply(input_arr)
         arr = input_arr
         i = 0
         result = 1
@@ -59,7 +59,7 @@ def add_view()
     puts "enter the imaginary part  complex"
     imaginary = gets
     b = Complex(real, imaginary)
-    cust1 = ComplexNumber.new().add_Two_Complex(b)
+    cust1 = ComplexNumber.new().+(b)
 end
 
 # multiply two complex #
@@ -69,7 +69,7 @@ def multiply_view()
     puts "enter the imaginary part  complex"
     imaginary = gets
     b = Complex(real, imaginary)
-    cust1 = ComplexNumber.new().multiply_Two_Complex(b)
+    cust1 = ComplexNumber.new().*(b)
 end
 
 
@@ -91,7 +91,7 @@ def add_multiple_view()
         i +=1
     end
     puts "values of arr #{arr}"
-    cust1 = ComplexNumber.new().add_Multiple_Complex(arr)
+    cust1 = ComplexNumber.new().bulk_add(arr)
 end
 
 def multiple_multiple_view()
@@ -111,7 +111,7 @@ def multiple_multiple_view()
         i +=1
     end
     puts "values of arr #{arr}"
-    cust1 = ComplexNumber.new().multiply_Multiple_Complex(arr)
+    cust1 = ComplexNumber.new().bulk_multiply(arr)
 end
 
 
