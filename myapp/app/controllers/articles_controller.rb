@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     load_and_authorize_resource
-
+    before_action :authorized, only:[:indexApi]
     # def create
     #     byebug
     #     ## ActiveModel::ForbiddenAttributesError
@@ -11,12 +11,10 @@ class ArticlesController < ApplicationController
     # end
     def index
         @articles = Article.all
-
-        #render :json => @articles, :root => false
       end
+
     def indexApi
         @articles = Article.all
-
         render :json => @articles, :root => false
     end
 
