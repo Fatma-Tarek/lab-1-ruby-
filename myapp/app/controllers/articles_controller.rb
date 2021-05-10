@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+    #load_and_authorize_resource
+
 
     # def create
     #     byebug
@@ -10,10 +12,18 @@ class ArticlesController < ApplicationController
     # end
     def index
         @articles = Article.all
+
+        #render :json => @articles, :root => false
       end
+    def indexApi
+        @articles = Article.all
+
+        render :json => @articles, :root => false
+    end
 
     def show
         @article = Article.find(params[:id])
+
      end
 
     def new
