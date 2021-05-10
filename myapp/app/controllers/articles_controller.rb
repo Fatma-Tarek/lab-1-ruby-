@@ -1,8 +1,4 @@
 class ArticlesController < ApplicationController
-    def new
-        #@name = params["name"]
-        @article = Article.new
-    end
 
     # def create
     #     byebug
@@ -16,9 +12,21 @@ class ArticlesController < ApplicationController
         @articles = Article.all
       end
 
+    def show
+        @article = Article.find(params[:id])
+     end
+
+    def new
+      #@name = params["name"]
+      @article = Article.new
+    end
+
+  #before_action :authenticate_user!
+
     def create
-        @article = Article.new(article_params)
- 
+        #respond_with Post.create(article_params.merge(user_id: current_user.id))
+        @article = Article.new(article_params.merge(user_id: current_user.id))
+        
         if @article.save
           redirect_to @article
         else
@@ -49,9 +57,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
      end
 
-    def show
-        @article = Article.find(params[:id])
-     end
+    
 
     private
         #called when create anything

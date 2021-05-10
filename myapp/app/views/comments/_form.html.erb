@@ -1,9 +1,10 @@
 
+ <% if user_signed_in? %>
 <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-  <p>
+  <%# <p>
     <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
+    <%#= form.text_field :commenter %>
+  <%# </p> %> 
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body %>
@@ -11,4 +12,5 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
 <% end %>

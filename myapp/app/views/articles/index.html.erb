@@ -5,6 +5,7 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Posted by</th>
     <th colspan="2"></th>
   </tr>
  
@@ -12,15 +13,20 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
+      <td><%= article.user.email %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
+      <% if user_signed_in? %>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
        <td><%= link_to 'Destroy', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+              
     </tr>
   <% end %>
 </table>
-
+ <% if user_signed_in? %>
 <%= link_to 'New article', new_article_path %>
+<% end %>
 
 
